@@ -1,13 +1,10 @@
-import { useState } from 'react'
+import Container from '@mui/material/Container'
 import Autocomplete from '@mui/material/Autocomplete'
-import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 
-export const SearchBar = ({ data }) => {
-  const [input, setInput] = useState(null)
-
+export const SearchBar = ({ data, input, setInput }) => {
   return (
-    <Box maxWidth='sm'>
+    <Container maxWidth='xs'>
       <Autocomplete
         id='Pokemon-Input'
         options={data.map(
@@ -22,7 +19,6 @@ export const SearchBar = ({ data }) => {
         clearOnBlur
         handleHomeEndKeys
       />
-      <div>{input}</div>
-    </Box>
+    </Container>
   )
 }
