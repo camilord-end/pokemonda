@@ -1,12 +1,16 @@
 import ReactDOM from 'react-dom/client'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { router } from './utils/router'
 
-import { App } from './App'
+import { StyledEngineProvider } from '@mui/material/styles'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 import { theme } from './utils/theme'
+import { RouterProvider } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ThemeProvider theme={theme}>
-    <CssBaseline enableColorScheme />
-    <App />
-  </ThemeProvider>
+  <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={theme}>
+      <CssBaseline enableColorScheme />
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </StyledEngineProvider>
 )
