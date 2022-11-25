@@ -8,30 +8,32 @@ import Paper from '@mui/material/Paper'
 
 export const PokemonStatTable = ({ stats }) => {
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label='stats table'>
-        <TableHead>
-          <TableRow>
-            <TableCell>Stat</TableCell>
-            <TableCell align='right'>Value</TableCell>
-            <TableCell align='right'>Effort</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {stats.map(({ base_stat, effort, stat: { name } }) => (
-            <TableRow
-              key={name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component='th' scope='row'>
-                {name}
-              </TableCell>
-              <TableCell align='right'>{base_stat}</TableCell>
-              <TableCell align='right'>{effort}</TableCell>
+    <Paper elevation={4}>
+      <TableContainer>
+        <Table stickyHeader aria-label='stats table'>
+          <TableHead>
+            <TableRow>
+              <TableCell>Stat</TableCell>
+              <TableCell align='right'>Value</TableCell>
+              <TableCell align='right'>Effort</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {stats.map(({ base_stat, effort, stat: { name } }) => (
+              <TableRow
+                key={name}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component='th' scope='row'>
+                  {name.charAt(0).toUpperCase() + name.slice(1)}
+                </TableCell>
+                <TableCell align='right'>{base_stat}</TableCell>
+                <TableCell align='right'>{effort}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
   )
 }
